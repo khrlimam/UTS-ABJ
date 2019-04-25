@@ -209,7 +209,7 @@
                         <h5 class="card-title">Form DHCP Server</h5>
 
                         <div class="form-group row">
-                            <label for="network-domain-name"
+                            <label for="dhcp-name"
                                    class="col-md-3 col-form-label">{{ __('Nama') }}</label>
 
                             <div class="col-md-9">
@@ -228,7 +228,7 @@
                                 <select id="dhcp-interface"
                                         class="form-control{{ $errors->has('dhcp-interface') ? ' is-invalid' : '' }}"
                                         name="dhcp-interface" required autofocus>
-                                    <option value="">--- Interface Tersedia ---</option>
+                                    <option value="">--- Interface belum dipakai ---</option>
                                     @foreach($interfaces as $interface)
                                         <option {{ $interface['name'] == old('dhcp-interface')?'selected':'' }} value="{{ $interface['name'] }}">{{ $interface['type'] }} - {{ $interface['name'] }} - {{ $interface['address'] }}</option>
                                     @endforeach

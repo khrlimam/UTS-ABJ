@@ -241,7 +241,7 @@
                         <h5 class="card-title">Form DHCP Server</h5>
 
                         <div class="form-group row">
-                            <label for="network-domain-name"
+                            <label for="dhcp-name"
                                    class="col-md-3 col-form-label">{{ __('Nama') }}</label>
 
                             <div class="col-md-9">

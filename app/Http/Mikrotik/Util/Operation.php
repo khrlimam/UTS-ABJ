@@ -57,7 +57,7 @@ class Operation
             });
             if ($gotIp->isNotEmpty())
                 return array_merge($interface, $gotIp->first());
-            return array_merge($interface, ['address' => '-']);
+            return array_merge($interface, ['address' => 'IP belum diatur']);
         });
         return $interfaces;
     }
@@ -72,7 +72,7 @@ class Operation
             });
             if ($gotIp->isNotEmpty())
                 return array_merge($interface, $gotIp->first());
-            return array_merge($interface, ['address' => '-']);
+            return array_merge($interface, ['address' => 'IP belum diatur']);
         });
         return $interfaces;
     }
