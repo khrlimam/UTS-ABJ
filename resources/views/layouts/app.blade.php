@@ -91,17 +91,13 @@
                 <div class="col-md-4">
                     <div class="card" style="width: 18rem;">
                         <h5 class="card-header">
-                            Menu IP
+                            Menu OSPF
                         </h5>
                         <ul class="list-group list-group-flush">
-                            <a href="{{ route('dhcp-server.index') }}"
-                               class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'dhcp-server.index'? 'active':'' }}">
-                                DHCP Server
+                            <a href="{{ route('ospf.index') }}"
+                               class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'ospf.index'? 'active':'' }}">
+                                Daftar Routing OSPF Network
                             </a>
-                            <a href="{{ route('pool.index') }}"
-                               class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'pool.index'? 'active':'' }}">Pool</a>
-                            <a href="{{ route('network.index') }}"
-                               class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'network.index'? 'active':'' }}">Network</a>
                         </ul>
                     </div>
                 </div>
