@@ -29,7 +29,9 @@
                             <div class="col-md-9">
                                 <input id="ospf-network" type="text" placeholder="Contoh: 192.168.1.0/24"
                                        class="form-control{{ $errors->has('ospf-network') ? ' is-invalid' : '' }}"
-                                       name="ospf-network" value="{{ old('ospf-network') }}" required autofocus>
+                                       name="ospf-network"
+                                       value="{{ old('ospf-network')? old('ospf-network'): $ospf['network'] }}" required
+                                       autofocus>
 
                                 @if ($errors->has('ospf-network'))
                                     <span class="invalid-feedback" role="alert">
@@ -50,7 +52,7 @@
                                         name="ospf-area" required autofocus>
                                     <option value="">--- Pilih area ---</option>
                                     @foreach($areas as $area)
-                                        <option {{ $area['name'] == old('ospf-area')?'selected':'' }} value="{{ $area['name'] }}">{{ $area['name'] }}</option>
+                                        <option {{ $area['name'] == (old('ospf-area')? old('ospf-area'): $ospf['area'])?'selected':'' }} value="{{ $area['name'] }}">{{ $area['name'] }}</option>
                                     @endforeach
                                 </select>
 

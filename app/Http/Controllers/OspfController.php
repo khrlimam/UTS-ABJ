@@ -67,8 +67,8 @@ class OspfController extends Controller
     public function edit($id)
     {
         $areas = Auth::user()->mikrotik()->run("routing ospf area print");
-        $ospf =  Auth::user()->mikrotik()->run("routing ospf area print", ["?.id" => $id]);
-        return view('auth.ospf.edit', compact('areas'));
+        $ospf =  head(Auth::user()->mikrotik()->run("routing ospf network print", ['?.id' => $id]));
+        return view('auth.ospf.edit', compact('areas', 'ospf'));
     }
 
     /**
@@ -87,7 +87,7 @@ class OspfController extends Controller
             'area' => $validated['ospf-area']
         ]);
 
-        return redirect()->route('ospf.index')->with('status', 'Berhasil mengubah Routing OSPF baru!');
+        return redirect()->route('ospf.index')->with('status', 'Berhasil mengubah Routing OSPF!');
     }
 
     /**
