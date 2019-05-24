@@ -45,6 +45,7 @@ class OspfController extends Controller
         ]);
         if (Operation::isSuccess($operation))
             return redirect()->route('ospf.index')->with('status', 'Berhasil menambahkan Routing OSPF baru!');
+        return redirect()->back()->withInput()->with('fail', 'Ada kesalahan ' . head($operation['!trap'])['message']);
     }
 
     /**
@@ -55,7 +56,7 @@ class OspfController extends Controller
      */
     public function show($id)
     {
-        //
+        dd(head(Auth::user()->mikrotik()->run("routing ospf network print", ["?.id" => $id])));
     }
 
     /**
@@ -67,7 +68,7 @@ class OspfController extends Controller
     public function edit($id)
     {
         $areas = Auth::user()->mikrotik()->run("routing ospf area print");
-        $ospf =  head(Auth::user()->mikrotik()->run("routing ospf network print", ['?.id' => $id]));
+        $ospf = head(Auth::user()->mikrotik()->run("routing ospf network print", ['?.id' => $id]));
         return view('auth.ospf.edit', compact('areas', 'ospf'));
     }
 
@@ -87,7 +88,9 @@ class OspfController extends Controller
             'area' => $validated['ospf-area']
         ]);
 
-        return redirect()->route('ospf.index')->with('status', 'Berhasil mengubah Routing OSPF!');
+        if (Operation::isSuccess($operation))
+            return redirect()->route('ospf.index')->with('status', 'Berhasil mengubah Routing OSPF!');
+        return redirect()->back()->withInput()->with('fail', 'Ada kesalahan ' . head($operation['!trap'])['message']);
     }
 
     /**
